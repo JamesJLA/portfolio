@@ -34,26 +34,26 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --ink: #edf6fa;
-    --ink-soft: #a9c4d0;
-    --canvas: #000000;
-    --canvas-soft: #05090c;
-    --canvas-highlight: #0b161d;
-    --canvas-gradient-top: #081219;
-    --canvas-gradient-mid: #000000;
-    --canvas-gradient-bottom: #000000;
-    --line: #163744;
-    --accent: #4eb3c8;
-    --accent-strong: #8adced;
-    --surface: #05090c;
-    --surface-muted: #081219;
-    --chip-top: #0d1b24;
-    --chip-bottom: #071019;
-    --card-top: #0c1a22;
-    --card-bottom: #060d13;
-    --button-text: #06131a;
-    --shadow-soft: 0 20px 30px -24px rgba(0, 0, 0, 0.75);
-    --shadow-card: 0 16px 20px -24px rgba(0, 0, 0, 0.82);
+    --ink: #e8eaed;
+    --ink-soft: #9aa0a6;
+    --canvas: #1e2124;
+    --canvas-soft: #282a2e;
+    --canvas-highlight: #2d2f33;
+    --canvas-gradient-top: #252729;
+    --canvas-gradient-mid: #1e2124;
+    --canvas-gradient-bottom: #181a1d;
+    --line: #3c4043;
+    --accent: #5ac8fa;
+    --accent-strong: #8ed9ff;
+    --surface: #282a2e;
+    --surface-muted: #2d2f33;
+    --chip-top: #323336;
+    --chip-bottom: #252729;
+    --card-top: #2d2f33;
+    --card-bottom: #232527;
+    --button-text: #1e2124;
+    --shadow-soft: 0 20px 30px -24px rgba(0, 0, 0, 0.55);
+    --shadow-card: 0 16px 20px -24px rgba(0, 0, 0, 0.65);
   }
 }
 
