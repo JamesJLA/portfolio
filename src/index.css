@@ -5,9 +5,22 @@
   --ink-soft: #2b3f4b;
   --canvas: #f3f8f9;
   --canvas-soft: #eaf4f6;
+   --canvas-highlight: #f4fbfc;
+   --canvas-gradient-top: #f8fcfd;
+   --canvas-gradient-mid: #f3f8f9;
+   --canvas-gradient-bottom: #e8f0f2;
   --line: #cfe0e4;
   --accent: #2d8ca0;
   --accent-strong: #1f6472;
+  --surface: #ffffff;
+  --surface-muted: #f7fbfc;
+  --chip-top: #f0f8f9;
+  --chip-bottom: #ffffff;
+  --card-top: #f7fcfd;
+  --card-bottom: #eef6f8;
+  --button-text: #ffffff;
+  --shadow-soft: 0 20px 30px -24px rgba(18, 44, 60, 0.38);
+  --shadow-card: 0 16px 20px -24px rgba(18, 44, 60, 0.48);
 
   font-family: 'Space Grotesk', 'Trebuchet MS', sans-serif;
   line-height: 1.6;
@@ -16,6 +29,32 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #edf6fa;
+    --ink-soft: #a9c4d0;
+    --canvas: #000000;
+    --canvas-soft: #05090c;
+    --canvas-highlight: #0b161d;
+    --canvas-gradient-top: #081219;
+    --canvas-gradient-mid: #000000;
+    --canvas-gradient-bottom: #000000;
+    --line: #163744;
+    --accent: #4eb3c8;
+    --accent-strong: #8adced;
+    --surface: #05090c;
+    --surface-muted: #081219;
+    --chip-top: #0d1b24;
+    --chip-bottom: #071019;
+    --card-top: #0c1a22;
+    --card-bottom: #060d13;
+    --button-text: #06131a;
+    --shadow-soft: 0 20px 30px -24px rgba(0, 0, 0, 0.75);
+    --shadow-card: 0 16px 20px -24px rgba(0, 0, 0, 0.82);
+  }
 }
 
 * {
@@ -25,7 +64,12 @@
 body {
   margin: 0;
   min-width: 320px;
-  background: radial-gradient(circle at 10% 10%, #f8fcfd 0, #f3f8f9 45%, #e8f0f2 100%);
+  background: radial-gradient(
+    circle at 10% 10%,
+    var(--canvas-gradient-top) 0,
+    var(--canvas-gradient-mid) 45%,
+    var(--canvas-gradient-bottom) 100%
+  );
   color: var(--ink);
 }
 
