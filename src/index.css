@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Space+Grotesk:wght@400;500;600&display=swap');
 
 :root {
-  --ink: #1b2430;
-  --ink-soft: #2f3b49;
-  --canvas: #fdf6ec;
-  --canvas-soft: #fef5e7;
-  --line: #e5d6c1;
-  --accent: #cb6f42;
-  --accent-strong: #8a4321;
+  --ink: #1a2933;
+  --ink-soft: #2b3f4b;
+  --canvas: #f3f8f9;
+  --canvas-soft: #eaf4f6;
+  --line: #cfe0e4;
+  --accent: #2d8ca0;
+  --accent-strong: #1f6472;
 
   font-family: 'Space Grotesk', 'Trebuchet MS', sans-serif;
   line-height: 1.6;
@@ -25,7 +25,7 @@
 body {
   margin: 0;
   min-width: 320px;
-  background: radial-gradient(circle at 10% 10%, #fff6e8 0, #fdf6ec 45%, #f7eddc 100%);
+  background: radial-gradient(circle at 10% 10%, #f8fcfd 0, #f3f8f9 45%, #e8f0f2 100%);
   color: var(--ink);
 }
 

@@ -11,10 +11,10 @@
 
 .hero {
   border-radius: 1.5rem;
-  padding: 2.25rem;
-  background: linear-gradient(135deg, var(--canvas-soft), #fff5ea);
+  padding: 2.2rem;
+  background: linear-gradient(135deg, var(--canvas-soft), #f4fbfc);
   border: 1px solid var(--line);
-  box-shadow: 0 20px 30px -24px rgba(16, 31, 54, 0.45);
+  box-shadow: 0 20px 30px -24px rgba(18, 44, 60, 0.38);
   animation: rise-in 500ms ease-out both;
 }
 
@@ -80,7 +80,7 @@ h1 {
 .link-row a {
   padding: 0.38rem 0.8rem;
   color: var(--ink-soft);
-  background: #fffdfb;
+  background: #f7fbfc;
 }
 
 .resume-button:hover,
@@ -92,9 +92,9 @@ h1 {
 .section-block {
   border: 1px solid var(--line);
   border-radius: 1.4rem;
-  padding: 1.75rem;
+  padding: 1.7rem;
   background: #ffffff;
-  box-shadow: 0 16px 20px -24px rgba(16, 31, 54, 0.55);
+  box-shadow: 0 16px 20px -24px rgba(18, 44, 60, 0.48);
   animation: rise-in 620ms ease-out both;
 }
 
@@ -134,7 +134,7 @@ h3 {
   border: 1px solid var(--line);
   color: var(--ink-soft);
   font-size: 0.92rem;
-  background: linear-gradient(160deg, #fdf8f2, #fffefe);
+  background: linear-gradient(160deg, #f0f8f9, #ffffff);
 }
 
 .project-grid {
@@ -148,7 +148,7 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 1rem;
   padding: 1rem;
-  background: linear-gradient(145deg, #fffdfb, #fff7ee);
+  background: linear-gradient(145deg, #f7fcfd, #eef6f8);
 }
 
 .project-stack {
