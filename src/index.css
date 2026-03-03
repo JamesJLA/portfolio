@@ -5,13 +5,14 @@
   --ink-soft: #2b3f4b;
   --canvas: #f3f8f9;
   --canvas-soft: #eaf4f6;
-   --canvas-highlight: #f4fbfc;
-   --canvas-gradient-top: #f8fcfd;
-   --canvas-gradient-mid: #f3f8f9;
-   --canvas-gradient-bottom: #e8f0f2;
+  --canvas-highlight: #f4fbfc;
+  --canvas-gradient-top: #f8fcfd;
+  --canvas-gradient-mid: #f3f8f9;
+  --canvas-gradient-bottom: #e8f0f2;
   --line: #cfe0e4;
   --accent: #2d8ca0;
   --accent-strong: #1f6472;
+  --accent-soft: rgba(45, 140, 160, 0.3);
   --surface: #ffffff;
   --surface-muted: #f7fbfc;
   --chip-top: #f0f8f9;
@@ -45,6 +46,7 @@
     --line: #3c4043;
     --accent: #5ac8fa;
     --accent-strong: #8ed9ff;
+    --accent-soft: rgba(90, 200, 250, 0.33);
     --surface: #282a2e;
     --surface-muted: #2d2f33;
     --chip-top: #323336;
