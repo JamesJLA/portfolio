@@ -1,3 +1,4 @@
+import { useState, useEffect, useCallback } from 'react'
 import './App.css'
 
 type Project = {
@@ -96,12 +97,19 @@ const profileLinks = [
   { label: 'Handshake', href: 'https://app.joinhandshake.com/profiles/jamesjla' },
 ] as const
 
+const menuItems = [
+  { id: 'about', label: 'ABOUT' },
+  { id: 'skills', label: 'SKILLS' },
+  { id: 'projects', label: 'PROJECTS' },
+  { id: 'experience', label: 'EXPERIENCE' },
+] as const
+
+type SectionId = (typeof menuItems)[number]['id']
+
 function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-heading">
-      <p className="eyebrow">Portfolio</p>
-      <h1 id="hero-heading">James Alexander</h1>
-      <p className="lead">
+      <p className="hero-bio-lead">
         Backend-leaning full-stack engineer focused on web services, developer tooling, and
         AI-assisted applications — with experience shipping projects across Rails, TypeScript,
         Go, and Python.
@@ -111,8 +119,8 @@ function Hero() {
         backend, infrastructure, or AI tooling.
       </p>
       <div className="hero-meta">
-        <span>George Mason University — B.S. Computer Science (May 2026)</span>
-        <span>Fairfax, VA</span>
+        <span className="hero-meta-chip">George Mason University — B.S. Computer Science (May 2026)</span>
+        <span className="hero-meta-chip">Fairfax, VA</span>
       </div>
       <div className="hero-actions">
         <a
@@ -121,12 +129,9 @@ function Hero() {
           target="_blank"
           rel="noreferrer"
         >
-          Download Resume
+          DOWNLOAD RESUME
         </a>
-        <nav
-          className="link-row"
-          aria-label="External profile links"
-        >
+        <nav className="link-row" aria-label="External profile links">
           {profileLinks.map((link) => (
             <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
               {link.label}
@@ -141,9 +146,9 @@ function Hero() {
 function SkillsSection() {
   return (
     <section className="section-block" aria-labelledby="skills-heading">
-      <h2 id="skills-heading">Technical Skills</h2>
+      <h2 id="skills-heading">TECHNICAL SKILLS</h2>
       <div className="skill-group">
-        <h3>Languages</h3>
+        <h3 className="skill-category">Languages</h3>
         <div className="chip-row" aria-label="Programming languages">
           {skills.languages.map((skill) => (
             <span key={skill} className="chip">
@@ -153,7 +158,7 @@ function SkillsSection() {
         </div>
       </div>
       <div className="skill-group">
-        <h3>Tools, Systems, and Frameworks</h3>
+        <h3 className="skill-category">Tools, Systems, and Frameworks</h3>
         <div className="chip-row" aria-label="Tools, systems, and frameworks">
           {skills.tools.map((skill) => (
             <span key={skill} className="chip">
@@ -169,12 +174,12 @@ function SkillsSection() {
 function ProjectsSection() {
   return (
     <section className="section-block" aria-labelledby="projects-heading">
-      <h2 id="projects-heading">Selected Projects</h2>
+      <h2 id="projects-heading">SELECTED PROJECTS</h2>
       <div className="project-grid">
         {projects.map((project) => (
           <article
             key={project.name}
-            className="project-card project-card--clickable"
+            className="project-card"
             role="link"
             tabIndex={0}
             aria-label={`${project.name} — open GitHub`}
@@ -187,7 +192,7 @@ function ProjectsSection() {
           >
             <p className="project-stack">{project.stack}</p>
             <h3>{project.name}</h3>
-            <p>{project.impact}</p>
+            <p className="project-desc">{project.impact}</p>
             <div className="project-actions" aria-label={`${project.name} links`}>
               <a
                 href={project.githubHref}
@@ -195,7 +200,7 @@ function ProjectsSection() {
                 rel="noreferrer"
                 onClick={(event) => event.stopPropagation()}
               >
-                GitHub
+                GITHUB
               </a>
               {project.liveHref && (
                 <a
@@ -204,7 +209,7 @@ function ProjectsSection() {
                   rel="noreferrer"
                   onClick={(event) => event.stopPropagation()}
                 >
-                  Live
+                  LIVE
                 </a>
               )}
             </div>
@@ -218,7 +223,7 @@ function ProjectsSection() {
 function ExperienceSection() {
   return (
     <section className="section-block" aria-labelledby="experience-heading">
-      <h2 id="experience-heading">Experience Highlights</h2>
+      <h2 id="experience-heading">EXPERIENCE HIGHLIGHTS</h2>
       <div className="timeline">
         {experiences.map((experience) => (
           <article key={experience.title} className="timeline-item">
@@ -233,13 +238,67 @@ function ExperienceSection() {
 }
 
 function App() {
+  const [active, setActive] = useState<SectionId>('about')
+
+  const handleKey = useCallback(
+    (e: KeyboardEvent) => {
+      const idx = menuItems.findIndex((m) => m.id === active)
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault()
+        setActive(menuItems[(idx + 1) % menuItems.length].id)
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault()
+        setActive(menuItems[(idx - 1 + menuItems.length) % menuItems.length].id)
+      }
+    },
+    [active],
+  )
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [handleKey])
+
   return (
-    <main className="portfolio">
-      <Hero />
-      <SkillsSection />
-      <ProjectsSection />
-      <ExperienceSection />
-    </main>
+    <div className="game-wrapper">
+      <div className="vignette" aria-hidden="true" />
+
+      <div className="game-screen">
+        <header className="game-header">
+          <div className="game-title-block">
+            <h1 className="game-title">JAMES ALEXANDER</h1>
+            <p className="game-subtitle">// PORTFOLIO TERMINAL //</p>
+          </div>
+        </header>
+
+        <nav className="game-menu" aria-label="Section navigation">
+          {menuItems.map((item) => (
+            <button
+              key={item.id}
+              className={`game-menu-item${active === item.id ? ' active' : ''}`}
+              onClick={() => setActive(item.id)}
+              aria-current={active === item.id ? 'true' : undefined}
+            >
+              <span className="menu-cursor">{active === item.id ? '▸' : ''}</span>
+              {item.label}
+            </button>
+          ))}
+        </nav>
+
+        <div className="game-content" key={active}>
+          {active === 'about' && <Hero />}
+          {active === 'skills' && <SkillsSection />}
+          {active === 'projects' && <ProjectsSection />}
+          {active === 'experience' && <ExperienceSection />}
+        </div>
+
+        <footer className="game-footer">
+          <span>[&larr; &rarr;] NAVIGATE</span>
+          <span>[CLICK] SELECT</span>
+          <span>&copy; 2026</span>
+        </footer>
+      </div>
+    </div>
   )
 }
 

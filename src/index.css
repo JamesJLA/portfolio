@@ -1,27 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Space+Grotesk:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
-  --ink: #1a2933;
-  --ink-soft: #2b3f4b;
-  --canvas: #f3f8f9;
-  --canvas-soft: #eaf4f6;
-  --canvas-highlight: #f4fbfc;
-  --canvas-gradient-top: #f8fcfd;
-  --canvas-gradient-mid: #f3f8f9;
-  --canvas-gradient-bottom: #e8f0f2;
-  --line: #cfe0e4;
-  --accent: #2d8ca0;
-  --accent-strong: #1f6472;
-  --accent-soft: rgba(45, 140, 160, 0.3);
-  --surface: #ffffff;
-  --surface-muted: #f7fbfc;
-  --chip-top: #f0f8f9;
-  --chip-bottom: #ffffff;
-  --card-top: #f7fcfd;
-  --card-bottom: #eef6f8;
-  --button-text: #ffffff;
-  --shadow-soft: 0 20px 30px -24px rgba(18, 44, 60, 0.38);
-  --shadow-card: 0 16px 20px -24px rgba(18, 44, 60, 0.48);
+  --bg-primary: #07070d;
+  --bg-surface: #0e0e18;
+  --bg-card: #14142a;
+  --accent-cyan: #00f0ff;
+  --accent-magenta: #ff00aa;
+  --accent-yellow: #ffdd00;
+  --accent-green: #00ff88;
+  --text-primary: #c8c8e0;
+  --text-secondary: #8888bb;
+  --text-dim: #44446a;
+  --border: #1e1e3a;
+  --glow-cyan: 0 0 7px rgba(0, 240, 255, 0.6), 0 0 25px rgba(0, 240, 255, 0.2);
+  --glow-magenta: 0 0 7px rgba(255, 0, 170, 0.6), 0 0 25px rgba(255, 0, 170, 0.2);
 
   font-family: 'Space Grotesk', 'Trebuchet MS', sans-serif;
   line-height: 1.6;
@@ -30,51 +22,68 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color-scheme: light dark;
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ink: #e8eaed;
-    --ink-soft: #9aa0a6;
-    --canvas: #1e2124;
-    --canvas-soft: #282a2e;
-    --canvas-highlight: #2d2f33;
-    --canvas-gradient-top: #252729;
-    --canvas-gradient-mid: #1e2124;
-    --canvas-gradient-bottom: #181a1d;
-    --line: #3c4043;
-    --accent: #5ac8fa;
-    --accent-strong: #8ed9ff;
-    --accent-soft: rgba(90, 200, 250, 0.33);
-    --surface: #282a2e;
-    --surface-muted: #2d2f33;
-    --chip-top: #323336;
-    --chip-bottom: #252729;
-    --card-top: #2d2f33;
-    --card-bottom: #232527;
-    --button-text: #1e2124;
-    --shadow-soft: 0 20px 30px -24px rgba(0, 0, 0, 0.55);
-    --shadow-card: 0 16px 20px -24px rgba(0, 0, 0, 0.65);
-  }
-}
-
-* {
+*, *::before, *::after {
   box-sizing: border-box;
+}
+
+html {
+  background: var(--bg-primary);
+  min-height: 100vh;
 }
 
 body {
   margin: 0;
-  min-width: 320px;
-  background: radial-gradient(
-    circle at 10% 10%,
-    var(--canvas-gradient-top) 0,
-    var(--canvas-gradient-mid) 45%,
-    var(--canvas-gradient-bottom) 100%
+  min-height: 100vh;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  overflow-x: hidden;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    rgba(0, 0, 0, 0.35) 1px,
+    rgba(0, 0, 0, 0.35) 2px
   );
-  color: var(--ink);
+  pointer-events: none;
+  z-index: 10000;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
 }
 
 p {
   margin: 0.35rem 0 0;
+}
+
+::selection {
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
 }
